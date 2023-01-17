@@ -70,5 +70,22 @@
 			</form>
 		</main>
 
+		<?php
+$outfile= 'result.json';
+$url='https://fformssubmit.pages.dev/api/submit';
+$json = file_get_contents($url);
+if($json) { 
+    if(file_put_contents($outfile, $json, FILE_APPEND)) {
+      echo "Saved JSON fetched from “{$url}” as “{$outfile}”.";
+    }
+    else {
+      echo "Unable to save JSON to “{$outfile}”.";
+    }
+}
+else {
+   echo "Unable to fetch JSON from “{$url}”.";
+}
+?>
+		
 	</body>
 </html>
